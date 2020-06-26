@@ -1,0 +1,12 @@
+<aura:component controller="CreateProductController" implements="flexipage:availableForAllPageTypes">
+    <lightning:recordEditForm objectApiName="Product_c__c">
+        <lightning:messages />
+        <lightning:inputField fieldName="Name" />
+        <lightning:inputField fieldName="Description__c" />
+        <lightning:inputField fieldName="Type__c" />
+        <lightning:inputField fieldName="Family__c" />
+        <lightning:inputField fieldName="Image__c" />
+        <lightning:inputField fieldName="Price__c" />
+        <lightning:button type="submit" name="Submit" label="submit" class="slds-m-top_medium"/>
+    </lightning:recordEditForm>
+</aura:component>

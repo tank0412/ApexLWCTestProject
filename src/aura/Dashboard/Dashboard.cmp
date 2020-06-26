@@ -1,5 +1,4 @@
 <aura:component controller="DashboardController" implements="flexipage:availableForAllPageTypes">
-
     <aura:attribute name="userID" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
     <lightning:formattedText value="{!v.userID}"/>
@@ -10,4 +9,5 @@
 
     <div class="slds-float_right"><lightning:button variant="brand" label="Create product" title="Create product" onclick="{! c.createProduct }" />
         <lightning:button variant="brand" label="Cart" title="Cart" onclick="{! c.openCart }" /> </div>
+
 </aura:component>
