@@ -1,7 +1,12 @@
 public class DashboardController {
 
 	@AuraEnabled
-	public static String getHelloWorld() {
-		return 'Hello world 4';
+	public static String getUserID() {
+		return UserInfo.getProfileId();
+	}
+
+	@AuraEnabled
+	public static String getUserName() {
+		return UserInfo.getName();
 	}
 }
