@@ -1,13 +1,14 @@
 <aura:component controller="DashboardController" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name="userID" type="String" />
+    <aura:attribute name="userName" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit2}"/>
+    <lightning:card>
     <lightning:formattedText value="{!v.userID}"/>
 
-    <aura:attribute name="userName" type="String" />
-    <aura:handler name="init" value="{!this}" action="{!c.onInit2}"/>
     <lightning:formattedText value="{!v.userName}"/>
-
     <div class="slds-float_right"><lightning:button variant="brand" label="Create product" title="Create product" onclick="{! c.createProduct }" />
         <lightning:button variant="brand" label="Cart" title="Cart" onclick="{! c.openCart }" /> </div>
+    </lightning:card>
 
 </aura:component>

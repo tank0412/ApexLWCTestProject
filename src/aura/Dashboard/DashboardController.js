@@ -5,7 +5,7 @@
     var state = response.getState();
     if(state === "SUCCESS") {
     var result = response.getReturnValue();
-    result = 'Account number: ' + result;
+    result = ' Account number: ' + result;
     component.set('v.userID', result);
     }
     else {
@@ -34,7 +34,7 @@
   createProduct: function (component, event, helper) {
     var evt = $A.get("e.force:navigateToComponent");
     evt.setParams({
-        componentDef : "c:CreateProduct"
+        componentDef : "c:Createproduct"
     });
     evt.fire();
   },
