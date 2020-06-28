@@ -14,7 +14,16 @@
                       $A.enqueueAction(action);
     },
     getProductDetails: function (component, event, helper) {
-
+    var target = event.target;
+    var indexOfProduct = target.getAttribute("data-row-index");
+    var evt = $A.get("e.force:navigateToComponent");
+    evt.setParams({
+        componentDef : "c:ProductDetails",
+        componentAttributes: {
+            productIndex : indexOfProduct
+        }
+    });
+    evt.fire();
     },
     addProductToCart: function (component, event, helper) {
 

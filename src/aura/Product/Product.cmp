@@ -1,7 +1,8 @@
 <aura:component controller="ProductController" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name = "productList" type = "EntityDefinition"/>
     <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
-    <aura:iteration items = "{!v.productList}" var = "product">
+    <aura:iteration items = "{!v.productList}" var = "product" indexVar="productIndex">
+        <div data-row-index="{!productIndex}" data-index="{!productIndex}">
     <lightning:card title="{!product.Name}">
         <p class="slds-p-horizontal_small">
             Description: {!product.Description__c}
@@ -9,5 +10,6 @@
         <lightning:button label="Details" title="Details" onclick="{! c.getProductDetails }" />
             <lightning:button label="Add" title="Add" onclick="{! c.addProductToCart }" />
     </lightning:card>
+        </div>
     </aura:iteration>
 </aura:component>

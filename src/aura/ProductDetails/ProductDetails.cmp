@@ -1,0 +1,20 @@
+<aura:component controller="ProductDetailsController" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name = "Product" type = "EntityDefinition"/>
+    <aura:attribute name = "productIndex" type = "EntityDefinition"/>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+
+    <lightning:card title="{!v.Product.Name}">
+        <p class="slds-p-horizontal_small">
+            Description: {!v.Product.Description__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Type: {!v.Product.Type__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Family: {!v.Product.Family__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Price: {!v.Product.	Price__c}
+        </p>
+    </lightning:card>
+</aura:component>
