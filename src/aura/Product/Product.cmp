@@ -1,6 +1,8 @@
 <aura:component controller="ProductController" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name = "productList" type = "EntityDefinition"/>
     <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <aura:attribute name="keyWord" type="String"/>
+    <lightning:input name="input8" value="{! v.keyWord }" placeholder="type search keyword" onchange="{!c.searchProducts}" />
     <aura:iteration items = "{!v.productList}" var = "product" indexVar="productIndex">
         <div data-row-index="{!productIndex}" data-index="{!productIndex}">
     <lightning:card title="{!product.Name}">
