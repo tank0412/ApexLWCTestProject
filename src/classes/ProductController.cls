@@ -10,4 +10,8 @@ public class ProductController {
 		}
 		return sobjectList;
 	}
+	@AuraEnabled
+	public static void addProductToCart(Integer index) {
+
+	}
 }

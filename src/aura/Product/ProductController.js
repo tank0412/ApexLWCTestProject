@@ -26,6 +26,20 @@
     evt.fire();
     },
     addProductToCart: function (component, event, helper) {
+        var target = event.target;
+        var indexOfProduct = target.getAttribute("data-row-index");
 
+                   var action = component.get("c.addProductToCart");
+
+                      action.setCallback(this, function(response) {
+                          if (response.getState() == "SUCCESS") {
+                              //var value = response.getReturnValue();
+                          }
+                          else{
+                              console.log('error'+response.message);
+                          }
+                      });
+                      action.setParams({  index : indexOfProduct  });
+                      $A.enqueueAction(action);
     }
 })
