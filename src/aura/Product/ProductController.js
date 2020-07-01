@@ -5,7 +5,9 @@
                       action.setCallback(this, function(response) {
                           if (response.getState() == "SUCCESS") {
                               var value = response.getReturnValue();
-                              component.set("v.productList", value);
+                               if($A.util.isEmpty(component.get("v.productList"))){
+                                      component.set("v.productList", value);
+                                }
                           }
                           else{
                               console.log('error'+response.message);
@@ -16,11 +18,13 @@
     getProductDetails: function (component, event, helper) {
     var target = event.target;
     var indexOfProduct = target.getAttribute("data-row-index");
+    var products = component.get("v.productList");
+    var idOfProduct = products[indexOfProduct].ID__c;
     var evt = $A.get("e.force:navigateToComponent");
     evt.setParams({
         componentDef : "c:ProductDetails",
         componentAttributes: {
-            productIndex : indexOfProduct
+            productID : idOfProduct
         }
     });
     evt.fire();

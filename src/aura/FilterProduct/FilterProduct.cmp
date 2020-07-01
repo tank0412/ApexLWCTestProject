@@ -1,0 +1,13 @@
+<aura:component controller="FilterProductController" implements="flexipage:availableForAllPageTypes">
+    <lightning:card>
+        <b><h1> Filter</h1></b>
+        <b><h2> Type</h2></b>
+        <lightning:button label="Drink" title="Drink" onclick="{! c.filterDrinkInProduct }" />
+        <lightning:button label="Food" title="Food" onclick="{! c.filterFoodInProduct }" />
+        <lightning:button label="Book" title="Book" onclick="{! c.filterBookInProduct }" />
+        <b><h2> Family</h2></b>
+        <lightning:button label="Coffee" title="Coffee" onclick="{! c.filterCoffeeInProduct }" />
+        <lightning:button label="Semi-finished" title="Semi-finished" onclick="{! c.filterSemiFinishedInProduct }" />
+        <lightning:button label="Harry Potter" title="Harry Potter" onclick="{! c.filterHarryPotterInProduct }" />
+    </lightning:card>
+</aura:component>

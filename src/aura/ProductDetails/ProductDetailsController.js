@@ -1,6 +1,6 @@
 ({
       doInit: function(component, event, helper) {
-                   var indexOfProduct = component.get('v.productIndex');
+                   var IDOfProduct = component.get('v.productID');
                    var action = component.get("c.getProduct");
 
                         action.setCallback(this, function(response) {
@@ -12,7 +12,7 @@
                                 console.log('error'+response.message);
                             }
                         });
-                        action.setParams({  index : indexOfProduct  });
+                        action.setParams({  productID : IDOfProduct  });
                         $A.enqueueAction(action);
       },
 })

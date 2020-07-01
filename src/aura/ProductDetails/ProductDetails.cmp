@@ -1,6 +1,6 @@
 <aura:component controller="ProductDetailsController" implements="flexipage:availableForAllPageTypes">
     <aura:attribute name = "Product" type = "EntityDefinition"/>
-    <aura:attribute name = "productIndex" type = "EntityDefinition"/>
+    <aura:attribute name = "productID" type = "EntityDefinition"/>
     <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
 
     <lightning:card title="{!v.Product.Name}">
