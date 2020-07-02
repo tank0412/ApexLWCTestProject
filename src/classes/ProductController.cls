@@ -28,7 +28,21 @@ public class ProductController {
 		return sobjectList;
 	}
 	@AuraEnabled
-	public static void addProductToCart(Integer index) {
-
+	public static Boolean addProductToCart(Integer productID) {
+		List<Integer> productIDList;
+		try {
+			if (Cache.Session.contains('productIDList')) {
+				productIDList = (List<Integer>)Cache.Session.get('productIDList');
+			} else {
+				productIDList = new List<Integer>();
+			}
+			productIDList.add(productID);
+			Cache.Session.put('productIDList', productIDList);
+			return true;
+		}
+		catch(Exception e){
+			system.debug('e.getLineNumber()------>'+e.getLineNumber()+'msg------>'+e.getMessage());
+			return false;
+		}
 	}
 }

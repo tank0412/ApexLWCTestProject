@@ -29,22 +29,23 @@
     });
     evt.fire();
     },
-    addProductToCart: function (component, event, helper) {
-        var target = event.target;
-        var indexOfProduct = target.getAttribute("data-row-index");
+    addProductsToCart: function (component, event, helper) {
+    var target = event.target;
+    var indexOfProduct = target.getAttribute("data-row-index");
+    var products = component.get("v.productList");
+    var idOfProduct = products[indexOfProduct].ID__c;
+    var action = component.get("c.addProductToCart");
 
-                   var action = component.get("c.addProductToCart");
-
-                      action.setCallback(this, function(response) {
-                          if (response.getState() == "SUCCESS") {
-                              //var value = response.getReturnValue();
-                          }
-                          else{
-                              console.log('error'+response.message);
-                          }
-                      });
-                      action.setParams({  index : indexOfProduct  });
-                      $A.enqueueAction(action);
+    action.setCallback(this, function(response) {
+                               if (response.getState() == "SUCCESS") {
+                                  var value = response.getReturnValue();
+                               }
+                               else{
+                                   console.log('error'+response.message);
+                               }
+                           });
+                           action.setParams({  productID : idOfProduct  });
+                           $A.enqueueAction(action);
     },
     searchProducts: function (component, event, helper) {
      var keyword = component.get("v.keyWord");

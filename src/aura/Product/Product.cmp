@@ -10,7 +10,7 @@
             Description: {!product.Description__c}
         </p>
         <lightning:button label="Details" title="Details" onclick="{! c.getProductDetails }" />
-            <lightning:button label="Add" title="Add" onclick="{! c.addProductToCart }" />
+            <lightning:button label="Add" title="Add" onclick="{! c.addProductsToCart }" />
     </lightning:card>
         </div>
     </aura:iteration>
