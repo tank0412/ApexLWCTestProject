@@ -1,0 +1,23 @@
+<aura:component controller="CartController" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name = "productList" type = "EntityDefinition"/>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <lightning:card>
+        <h1>Products in a cart</h1>
+    </lightning:card>
+    <aura:iteration items = "{!v.productList}" var = "product" indexVar="productIndex">
+    <lightning:card title="{!product.Name}">
+        <p class="slds-p-horizontal_small">
+            Description: {!product.Description__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Type: {!product.Type__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Family: {!product.Family__c}
+        </p>
+        <p class="slds-p-horizontal_small">
+            Price: {!product.Price__c}
+        </p>
+    </lightning:card>
+    </aura:iteration>
+</aura:component>
