@@ -22,4 +22,59 @@ public class CartController {
 		}
 		return sobjectList;
 	}
+	@AuraEnabled
+	public static Boolean checkOutACart() {
+		try {
+			String profileID = UserInfo.getProfileId();
+
+			Order__c order = new Order__c(
+					AccountId__c = profileID,
+					TotalPrice__c = 0,
+					TotalProductCount__c = 0
+			);
+			insert order;
+			String orderID = order.Id;
+			order = [SELECT ID__c FROM Order__c WHERE Id = :orderID];
+			orderID = order.ID__c;
+
+
+			if (Cache.Session.contains('productIDList')) {
+				List<Integer> productIDList = (List<Integer>)Cache.Session.get('productIDList');
+				productIDList.sort();
+				OrderItem__c orderItem = null;
+				for(Integer id: productIDList) {
+					String idS = String.valueOf(id);
+					if(orderItem != null && orderItem.ProductId__c != id) {
+						insert orderItem;
+						orderItem = null;
+					}
+					if(orderItem == null) {
+					Product_c__c product = [SELECT Name, Description__c, Type__c, Family__c, Price__c FROM Product_c__c WHERE ID__c=:idS];
+
+					orderItem = new OrderItem__c(
+							OrderId__c = Integer.valueOf(orderID),
+							Price__c = product.Price__c,
+							ProductId__c = id,
+							Quantity__c = 1
+					);
+				}
+					else {
+						if(orderItem.ProductId__c == id) {
+							orderItem.Quantity__c++;
+							orderItem.Price__c*= 2;
+						}
+					}
+				}
+				if(orderItem != null) {
+					insert orderItem; //for last orderItem
+				}
+			}
+
+        return true;
+		}
+		catch(DmlException e) {
+			System.debug('An unexpected error has occurred: ' + e.getMessage());
+			return false;
+		}
+	}
 }

@@ -4,6 +4,7 @@
     <lightning:card>
         <h1>Products in a cart</h1>
     </lightning:card>
+    <lightning:button variant="brand" label="Check out a cart" title="Check out a cart" onclick="{! c.checkOutCart }" />
     <aura:iteration items = "{!v.productList}" var = "product" indexVar="productIndex">
     <lightning:card title="{!product.Name}">
         <p class="slds-p-horizontal_small">
