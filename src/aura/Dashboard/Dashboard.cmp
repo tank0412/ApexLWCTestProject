@@ -1,13 +1,16 @@
 <aura:component controller="DashboardController" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="isManager" type="Boolean" />
     <aura:attribute name="userID" type="String" />
     <aura:attribute name="userName" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
-    <aura:handler name="init" value="{!this}" action="{!c.onInit2}"/>
     <lightning:card>
     <lightning:formattedText value="{!v.userID}"/>
 
     <lightning:formattedText value="{!v.userName}"/>
-    <div class="slds-float_right"><lightning:button variant="brand" label="Create product" title="Create product" onclick="{! c.createProduct }" />
+    <div class="slds-float_right">
+        <aura:if isTrue="{!v.isManager}">
+        <lightning:button variant="brand" label="Create product" title="Create product" onclick="{! c.createProduct }" />
+        </aura:if>
         <lightning:button variant="brand" label="Cart" title="Cart" onclick="{! c.openCart }" />
         <lightning:button variant="brand" label="Order Management" title="Order Management" onclick="{! c.orderManagement }" />
     </div>

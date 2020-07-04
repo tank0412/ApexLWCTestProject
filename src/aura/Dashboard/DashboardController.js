@@ -1,5 +1,6 @@
 ({
   onInit: function (component, event, helper) {
+    //getUserID
     var action = component.get("c.getUserID");
     action.setCallback(this, function(response) {
     var state = response.getState();
@@ -13,9 +14,8 @@
     }
     });
       $A.enqueueAction(action);
-  },
 
-  onInit2: function (component, event, helper) {
+    //getUserName
     var action = component.get("c.getUserName");
     action.setCallback(this, function(response) {
     var state = response.getState();
@@ -26,6 +26,17 @@
     }
     else {
     component.set('v.userName', 'fail');
+    }
+    });
+      $A.enqueueAction(action);
+
+    //isManager
+    var action = component.get("c.checkIsManager");
+    action.setCallback(this, function(response) {
+    var state = response.getState();
+    if(state === "SUCCESS") {
+    var result = response.getReturnValue();
+    component.set('v.isManager', result);
     }
     });
       $A.enqueueAction(action);
