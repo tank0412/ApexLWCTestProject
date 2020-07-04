@@ -39,13 +39,18 @@
     evt.fire();
   },
 
-
-
   openCart: function (component, event, helper) {
     var evt = $A.get("e.force:navigateToComponent");
     evt.setParams({
         componentDef : "c:Cart"
     });
     evt.fire();
+  },
+  orderManagement: function (component, event, helper) {
+      var evt = $A.get("e.force:navigateToComponent");
+      evt.setParams({
+          componentDef : "c:OrderManagement"
+      });
+      evt.fire();
   }
 })

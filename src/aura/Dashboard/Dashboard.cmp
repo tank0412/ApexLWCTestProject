@@ -8,7 +8,9 @@
 
     <lightning:formattedText value="{!v.userName}"/>
     <div class="slds-float_right"><lightning:button variant="brand" label="Create product" title="Create product" onclick="{! c.createProduct }" />
-        <lightning:button variant="brand" label="Cart" title="Cart" onclick="{! c.openCart }" /> </div>
+        <lightning:button variant="brand" label="Cart" title="Cart" onclick="{! c.openCart }" />
+        <lightning:button variant="brand" label="Order Management" title="Order Management" onclick="{! c.orderManagement }" />
+    </div>
     </lightning:card>
 
 </aura:component>

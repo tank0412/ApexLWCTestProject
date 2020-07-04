@@ -1,0 +1,22 @@
+<aura:component controller="OrderManagementController" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name = "ordersList" type = "EntityDefinition"/>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <lightning:card>
+    <h1>Order Management Page</h1>
+    </lightning:card>
+    <aura:iteration items = "{!v.ordersList}" var = "order" indexVar="orderIndex">
+        <div data-row-index="{!orderIndex}" data-index="{!orderIndex}">
+            <lightning:card>
+                <aura:set attribute="title">
+                    Order ID: {!order.ID__c}
+                </aura:set>
+                <p class="slds-p-horizontal_small">
+                    Total Price: {!order.TotalPrice__c}
+                </p>
+                <p class="slds-p-horizontal_small">
+                    Total Product Count: {!order.TotalProductCount__c}
+                </p>
+            </lightning:card>
+        </div>
+    </aura:iteration>
+</aura:component>
