@@ -13,10 +13,10 @@ public class ProductController {
 	@AuraEnabled
 	public static List <Product_c__c> searchProduct(String keyWord) {
 		List <Product_c__c> sobjectList;
-		System.debug(keyWord);
+		String keywordLike= '%'+keyWord+'%';
 		try {
 			if(keyWord != '') {
-				sobjectList = [SELECT Name, Description__c FROM Product_c__c WHERE Name=:keyWord ORDER BY ID__c];
+				sobjectList = [SELECT Name, Description__c FROM Product_c__c WHERE Name LIKE :keywordLike ORDER BY ID__c];
 			}
 			else {
 				sobjectList = [SELECT Name, Description__c FROM Product_c__c ORDER BY ID__c ];
