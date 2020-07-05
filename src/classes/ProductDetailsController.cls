@@ -1,3 +1,13 @@
+/**
+ * @author Roman Bukhtiarov
+ * @date 2020
+ * @description Class with method to get additional info for product
+ */
+/**
+* @description Get all information of product from DB
+ *@param productID an ID of product
+* @return Product_c__c object
+*/
 public class ProductDetailsController {
 
 	@AuraEnabled

@@ -1,4 +1,13 @@
+/**
+ * @author Roman Bukhtiarov
+ * @date 2020
+ * @description Class with methods to make SQL queries for cart
+ */
 public class CartController {
+	/**
+	 * @description Get ID of products which was stored in Sessions Cache, then get Product_c__c list from DB
+	 * @return list of Product_c__c objects
+	 */
 	@AuraEnabled
 	public static List <Product_c__c> getProductsInCart() {
 		List <Product_c__c> sobjectList;
@@ -22,6 +31,10 @@ public class CartController {
 		}
 		return sobjectList;
 	}
+	/**
+	 * @description Create order and order items from products in a cart
+	 * @return result of cart checkout
+	 */
 	@AuraEnabled
 	public static Boolean checkOutACart() {
 		try {

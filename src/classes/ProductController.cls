@@ -1,4 +1,13 @@
+/**
+ * @author Roman Bukhtiarov
+ * @date 2020
+ * @description Class with methods to work with Product_c__c table in DB
+ */
 public class ProductController {
+	/**
+	* @description Get all products from DB
+	* @return list of Product_c__c objects
+	*/
 	@AuraEnabled
 	public static List <Product_c__c> getProductList() {
 		List <Product_c__c> sobjectList;
@@ -10,6 +19,11 @@ public class ProductController {
 		}
 		return sobjectList;
 	}
+	/**
+	* @description Get products from DB which name has a search keyword
+	 *@param keyWord a letters which will be used to check which names of products has this letters
+	* @return list of Product_c__c objects
+	*/
 	@AuraEnabled
 	public static List <Product_c__c> searchProduct(String keyWord) {
 		List <Product_c__c> sobjectList;
@@ -27,6 +41,10 @@ public class ProductController {
 		}
 		return sobjectList;
 	}
+	/**
+	* @description Method which adds product to cart by storing product ID value in session cache
+	* @return boolean value with result of adding product to cart
+	*/
 	@AuraEnabled
 	public static Boolean addProductToCart(Integer productID) {
 		List<Integer> productIDList;
