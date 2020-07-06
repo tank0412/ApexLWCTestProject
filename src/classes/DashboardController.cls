@@ -29,8 +29,8 @@ public class DashboardController {
 	 */
 	@AuraEnabled
 	public static Boolean checkIsManager() {
-		String profileID = UserInfo.getProfileId();
-		User user = [SELECT ProfileId, IsManager__c FROM User WHERE ProfileId =: profileID];
+		String profileID = UserInfo.getUserId();
+		User user = [SELECT ProfileId, IsManager__c FROM User WHERE Id =: profileID];
 		return user.IsManager__c;
 	}
 }
