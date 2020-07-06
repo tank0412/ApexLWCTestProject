@@ -38,7 +38,7 @@ public class CartController {
 	@AuraEnabled
 	public static Boolean checkOutACart() {
 		try {
-			String profileID = UserInfo.getProfileId();
+			String profileID = UserInfo.getUserId();
 
 			Order__c order = new Order__c(
 					AccountId__c = profileID,

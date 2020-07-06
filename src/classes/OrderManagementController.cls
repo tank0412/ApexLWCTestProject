@@ -10,7 +10,7 @@ public class OrderManagementController {
 	*/
 	@AuraEnabled
 	public static List <Order__c> getOrdersList() {
-		String accountID = UserInfo.getProfileId();
+		String accountID = UserInfo.getUserId();
 		List <Order__c> sobjectList;
 		try {
 			sobjectList = [SELECT ID__c, TotalPrice__c, TotalProductCount__c FROM Order__c WHERE AccountId__c=:accountID ORDER BY ID__c ];

@@ -11,7 +11,7 @@ public class DashboardController {
 	 */
 	@AuraEnabled
 	public static String getUserID() {
-		return UserInfo.getProfileId();
+		return UserInfo.getUserId();
 	}
 
 	/**
